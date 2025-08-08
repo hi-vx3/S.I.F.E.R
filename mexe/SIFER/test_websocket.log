@@ -1,0 +1,157 @@
+2025-08-08 05:53:23,850 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:53:25,862 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:53:30,862 - INFO - إغلاق الاتصال
+2025-08-08 05:53:30,863 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:53:32,870 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:53:37,871 - INFO - إغلاق الاتصال
+2025-08-08 05:53:37,882 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:53:39,887 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:53:44,887 - INFO - إغلاق الاتصال
+2025-08-08 05:53:44,888 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:53:46,890 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:53:51,904 - INFO - إغلاق الاتصال
+2025-08-08 05:53:51,904 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:53:53,908 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:53:58,909 - INFO - إغلاق الاتصال
+2025-08-08 05:53:58,909 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:54:00,913 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:54:05,913 - INFO - إغلاق الاتصال
+2025-08-08 05:54:05,913 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:54:07,927 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:54:12,927 - INFO - إغلاق الاتصال
+2025-08-08 05:54:12,927 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:54:14,931 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:54:19,932 - INFO - إغلاق الاتصال
+2025-08-08 05:54:19,932 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:54:21,936 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:54:26,937 - INFO - إغلاق الاتصال
+2025-08-08 05:54:26,938 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:54:28,942 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:54:33,942 - INFO - إغلاق الاتصال
+2025-08-08 05:54:33,942 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:54:35,946 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:54:40,947 - INFO - إغلاق الاتصال
+2025-08-08 05:54:40,947 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:54:42,952 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:54:47,952 - INFO - إغلاق الاتصال
+2025-08-08 05:54:47,952 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:54:49,969 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:54:54,970 - INFO - إغلاق الاتصال
+2025-08-08 05:54:54,970 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:54:56,974 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:55:01,974 - INFO - إغلاق الاتصال
+2025-08-08 05:55:01,975 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:55:03,978 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:55:08,980 - INFO - إغلاق الاتصال
+2025-08-08 05:55:08,980 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:55:10,982 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:55:15,983 - INFO - إغلاق الاتصال
+2025-08-08 05:55:15,983 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:55:17,986 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:55:22,987 - INFO - إغلاق الاتصال
+2025-08-08 05:55:22,987 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:55:24,992 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:55:29,993 - INFO - إغلاق الاتصال
+2025-08-08 05:55:29,993 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:55:31,995 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:55:36,995 - INFO - إغلاق الاتصال
+2025-08-08 05:55:36,996 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:55:38,997 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:55:43,998 - INFO - إغلاق الاتصال
+2025-08-08 05:55:43,998 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:55:46,003 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:55:51,004 - INFO - إغلاق الاتصال
+2025-08-08 05:55:51,004 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:55:53,007 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:55:58,008 - INFO - إغلاق الاتصال
+2025-08-08 05:55:58,008 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:56:00,012 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:56:05,012 - INFO - إغلاق الاتصال
+2025-08-08 05:56:05,013 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:56:07,015 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:56:12,015 - INFO - إغلاق الاتصال
+2025-08-08 05:56:12,015 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:56:14,025 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:56:19,025 - INFO - إغلاق الاتصال
+2025-08-08 05:56:19,025 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:56:21,027 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:56:26,028 - INFO - إغلاق الاتصال
+2025-08-08 05:56:26,028 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:56:28,033 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:56:33,033 - INFO - إغلاق الاتصال
+2025-08-08 05:56:33,033 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:56:35,035 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:56:40,036 - INFO - إغلاق الاتصال
+2025-08-08 05:56:40,036 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:56:42,038 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:56:47,038 - INFO - إغلاق الاتصال
+2025-08-08 05:56:47,038 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:56:49,040 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:56:54,041 - INFO - إغلاق الاتصال
+2025-08-08 05:56:54,041 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:56:56,047 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:57:01,048 - INFO - إغلاق الاتصال
+2025-08-08 05:57:01,048 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:57:03,053 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:57:08,053 - INFO - إغلاق الاتصال
+2025-08-08 05:57:08,054 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:57:10,057 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:57:15,057 - INFO - إغلاق الاتصال
+2025-08-08 05:57:15,058 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:57:17,061 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:57:22,061 - INFO - إغلاق الاتصال
+2025-08-08 05:57:22,061 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:57:24,065 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:57:29,066 - INFO - إغلاق الاتصال
+2025-08-08 05:57:29,066 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:57:31,074 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:57:36,075 - INFO - إغلاق الاتصال
+2025-08-08 05:57:36,075 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:57:38,077 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:57:43,078 - INFO - إغلاق الاتصال
+2025-08-08 05:57:43,078 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:57:45,082 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:57:50,082 - INFO - إغلاق الاتصال
+2025-08-08 05:57:50,083 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:57:52,087 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:57:57,087 - INFO - إغلاق الاتصال
+2025-08-08 05:57:57,088 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:57:59,091 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:58:04,092 - INFO - إغلاق الاتصال
+2025-08-08 05:58:04,093 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:58:06,111 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:58:07,269 - INFO - إغلاق الاتصال
+2025-08-08 05:58:07,270 - INFO - تم إيقاف البرنامج بواسطة المستخدم
+2025-08-08 05:59:24,030 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:59:26,036 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:59:31,037 - INFO - إغلاق الاتصال
+2025-08-08 05:59:31,037 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:59:33,053 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:59:38,056 - INFO - إغلاق الاتصال
+2025-08-08 05:59:38,056 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:59:40,074 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:59:45,074 - INFO - إغلاق الاتصال
+2025-08-08 05:59:45,074 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:59:47,077 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:59:52,078 - INFO - إغلاق الاتصال
+2025-08-08 05:59:52,078 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 05:59:54,079 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 05:59:59,079 - INFO - إغلاق الاتصال
+2025-08-08 05:59:59,079 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 06:00:01,085 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 06:00:06,085 - INFO - إغلاق الاتصال
+2025-08-08 06:00:06,085 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 06:00:08,087 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 06:00:13,089 - INFO - إغلاق الاتصال
+2025-08-08 06:00:13,089 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 06:00:15,109 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 06:00:20,110 - INFO - إغلاق الاتصال
+2025-08-08 06:00:20,110 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 06:00:22,125 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 06:00:27,125 - INFO - إغلاق الاتصال
+2025-08-08 06:00:27,126 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 06:00:29,128 - ERROR - لا يمكن الاتصال: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-08-08 06:00:34,128 - INFO - إغلاق الاتصال
+2025-08-08 06:00:34,128 - INFO - محاولة الاتصال بـ ws://localhost:12345
+2025-08-08 06:00:35,130 - INFO - إغلاق الاتصال
+2025-08-08 06:00:35,130 - INFO - تم إيقاف البرنامج بواسطة المستخدم

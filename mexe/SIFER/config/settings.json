@@ -1,0 +1,5 @@
+{
+  "audio_volume": 0.8,
+  "network_check_interval": 5,
+  "emergency_timeout": 180
+}
