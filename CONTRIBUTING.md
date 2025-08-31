@@ -27,7 +27,7 @@ Your contributions will help make the project stronger and more reliable.
 2. Create a new branch with a descriptive name:  
    ```bash
    git checkout -b feature/my-feature
-````
+   ```
 
 3. Make your changes.
 4. Test your changes to ensure stability.
@@ -57,4 +57,3 @@ Your contributions will help make the project stronger and more reliable.
 
 The project is in an early stage. Even small contributions are highly valuable.
 
-```
