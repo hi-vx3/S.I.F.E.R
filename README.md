@@ -1,84 +1,76 @@
 # 🛡️ S.I.F.E.R
-**Surveillance Interface For Enhanced Response**  
-نظام مراقبة متقدم يربط جميع أجهزتك (Android / PC) في شبكة مراقبة موحدة، يرسل Logs أمنية وتحليلية إلى مركز تحكم مركزي (Mini PC) يحتوي على آليات تنبيه وتحليل لحظي.
+**Surveillance Interface For Enhanced Response**
+
+S.I.F.E.R is an advanced monitoring system that connects Android and PC devices into a unified security network.  
+It collects security and analytical logs and sends them to a central control hub (Mini PC) for real-time analysis and alerts.
 
 ---
 
-## 🎯 الهدف من المشروع
-
-توفير بنية أمنية متقدمة بدون روت لمراقبة الأجهزة الشخصية بشكل استباقي. S.I.F.E.R يهدف إلى:
-
-- جمع **بيانات أمنية حساسة** من كل جهاز (موقع، صلاحيات التطبيقات، اتصال الشبكة).
-- إرسالها إلى مركز تحكم لتحليلها وتصنيفها حسب مستوى التهديد.
-- **إطلاق إنذارات صوتية** عند تجاوز الخطر لمستوى معين.
-- حفظ البيانات وتحليل السلوكيات على المدى الطويل.
+## 🎯 Objective
+- Collect sensitive security data (location, app permissions, network state).  
+- Send logs to a central server for analysis and threat classification.  
+- Trigger audio alerts when threats exceed a defined risk level.  
+- Store and analyze behavioral data over time.  
 
 ---
 
-## 🧩 مكونات النظام
+## 🧩 System Components
 
-### 1. Android Client (بدون روت)
-- تتبع الموقع الجغرافي كل ثانية.
-- مراقبة تغييرات صلاحيات التطبيقات.
-- مراقبة الشبكة والاتصال بالإنترنت.
-- تخزين محلي للـLogs في حالة انقطاع الاتصال.
-- إرسال مباشر للـLogs عبر WebSocket إلى Mini PC.
+### Android Client
+- Periodic location tracking.  
+- Monitoring changes in app permissions.  
+- Monitoring network connectivity and internet state.  
+- Local log storage during connection loss.  
+- Real-time log transmission via WebSocket to the Mini PC.  
 
-### 2. Mini PC Server (المركز الأمني)
-- استقبال الـLogs من كل جهاز متصل.
-- تحليل وتصنيف الحدث (ضعيف - متوسط - عالي - خطر).
-- عرض حي للأحداث عبر واجهة Dashboard.
-- إطلاق أصوات تنبيه عند التهديدات.
-
----
-
-## 🔐 الخصائص الأمنية
-
-- لا يتطلب صلاحيات روت.
-- تخزين مؤقت آمن عند انقطاع الشبكة.
-- تشفير الاتصالات عبر WebSocket Secure (wss://).
-- يدعم العمل في الخلفية دون إشعار مرئي.
+### Mini PC Server
+- Receive logs from connected devices.  
+- Analyze and classify events (Low, Medium, High, Critical).  
+- Provide a live Dashboard for monitoring events.  
+- Trigger audio alerts on critical threats.  
 
 ---
 
-## 📦 التقنيات المستخدمة
-
-| المكون | التقنية |
-|--------|---------|
-| Android Client | Kotlin, Foreground Services, FusedLocationProvider, UsageStatsManager, WebSocket |
-| Server | Node.js / Python (قابل للتبديل), WebSocket API, Log Parser, Audio Alert System |
-| Dashboard | React.js أو Tkinter حسب الجهاز |
-| الإتصال | WebSocket أو HTTPS Backup |
+## 🔐 Security Features
+- Works without root access.  
+- Secure temporary storage during network outages.  
+- Encrypted communication via WebSocket Secure (wss://).  
+- Runs silently in the background.  
 
 ---
 
-## 🚧 الحالة الحالية للمشروع
-
-- [x] تحديد المتطلبات
-- [ ] بناء Android Client
-- [ ] تصميم سيرفر استقبال Logs
-- [ ] واجهة Dashboard للعرض والتحكم
-- [ ] ربط النظام الصوتي بالتحذيرات
-
----
-
-## 🧠 المساهمات المستقبلية
-
-- تحليل سلوك التطبيقات وحجب المشبوه.
-- تكامل مع Telegram / Discord / Email لتنبيهات الطوارئ.
-- دعم تسجيل فيديو أو صور عند التهديدات القصوى.
+## 📦 Technologies
+| Component       | Technology |
+|-----------------|------------|
+| Android Client  | Kotlin, Foreground Services, FusedLocationProvider, UsageStatsManager, WebSocket |
+| Server          | Node.js / Python, WebSocket API, Log Parser, Audio Alerts |
+| Dashboard       | React.js or Tkinter |
+| Communication   | WebSocket / HTTPS (fallback) |
 
 ---
 
-## 👤 المطور
-
-> **Sami**  
-مهندس برمجيات ومطوّر أنظمة أمنية متقدمة  
-يعمل على إنشاء منظومة دفاعية مترابطة بين الأجهزة الشخصية باستخدام أدوات غير تقليدية وبدون روت.
+## 🚧 Project Status
+- [x] Requirements defined  
+- [ ] Android Client development  
+- [ ] Server for log ingestion  
+- [ ] Dashboard for visualization and control  
+- [ ] Audio alert integration  
 
 ---
 
-## 📜 ملاحظات
+## 🧠 Future Contributions
+- Application behavior analysis and suspicious app blocking.  
+- Integration with Telegram / Discord / Email for emergency alerts.  
+- Support for recording video or capturing images during critical threats.  
 
-> هذا النظام مخصص للاستخدام الشخصي والبحثي. لا يُستخدم لمراقبة أطراف أخرى دون إذن.
+---
 
+## 👤 Developer
+**Sami**  
+Software Engineer building advanced personal security and monitoring systems.  
+
+---
+
+## 📜 License
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for details.
