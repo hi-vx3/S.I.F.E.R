@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.I.F.E.R - Surveillance Interface For Enhanced Response</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --carbon-black: #0B0B0B;
+            --neon-red: #FF0033;
+            --tactical-gray: #2E2E2E;
+            --ice-white: #E5E5E5;
+            --electric-blue: #00FFFF;
+            --blood-red: #B30000;
+            --amber-warning: #FFB300;
+            --toxic-green: #00FF88;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--carbon-black);
+            color: var(--ice-white);
+            font-family: 'JetBrains Mono', monospace;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Matrix rain effect */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+        }
+
+        .matrix-column {
+            position: absolute;
+            top: -100px;
+            color: var(--toxic-green);
+            font-size: 14px;
+            animation: matrixRain linear infinite;
+        }
+
+        @keyframes matrixRain {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Glitch effect */
+        .glitch {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            10% { transform: translate(-2px, 2px); }
+            20% { transform: translate(2px, -2px); }
+            30% { transform: translate(-2px, 0); }
+            40% { transform: translate(2px, 2px); }
+            50% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 0); }
+            70% { transform: translate(0, 2px); }
+            80% { transform: translate(-2px, -2px); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 11, 11, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--neon-red);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--neon-red);
+            text-shadow: 0 0 10px var(--neon-red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--ice-white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            border-color: var(--electric-blue);
+            color: var(--electric-blue);
+            text-shadow: 0 0 5px var(--electric-blue);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-red), var(--electric-blue));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 0, 51, 0.5);
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--tactical-gray);
+            opacity: 0.8;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: var(--ice-white);
+            font-style: italic;
+        }
+
+        /* Terminal Window */
+        .terminal {
+            background: rgba(46, 46, 46, 0.9);
+            border: 1px solid var(--toxic-green);
+            border-radius: 5px;
+            margin: 2rem auto;
+            max-width: 800px;
+            font-family: 'JetBrains Mono', monospace;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .terminal-header {
+            background: var(--tactical-gray);
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid var(--toxic-green);
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: var(--neon-red); }
+        .dot-yellow { background: var(--amber-warning); }
+        .dot-green { background: var(--toxic-green); }
+
+        .terminal-body {
+            padding: 1rem;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            animation: typewriter 0.1s steps(1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes typewriter {
+            to { opacity: 1; }
+        }
+
+        .status-ok { color: var(--toxic-green); }
+        .status-warning { color: var(--amber-warning); }
+        .status-danger { color: var(--neon-red); }
+        .status-info { color: var(--electric-blue); }
+
+        /* Download Buttons */
+        .download-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: rgba(46, 46, 46, 0.1);
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+
+        .download-card {
+            background: rgba(46, 46, 46, 0.8);
+            border: 1px solid var(--tactical-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-card:hover {
+            border-color: var(--electric-blue);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.1);
+        }
+
+        .download-card h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--electric-blue);
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--neon-red), var(--blood-red));
+            color: var(--ice-white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 1px solid var(--neon-red);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 51, 0.5);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Fake Dashboard Preview */
+        .dashboard-preview {
+            padding: 4rem 2rem;
+            background: var(--carbon-black);
+        }
+
+        .dashboard-preview h2 {
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            color: var(--electric-blue);
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard-card {
+            background: rgba(46, 46, 46, 0.8);
+            border: 1px solid var(--tactical-gray);
+            border-radius: 10px;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(11, 11, 11, 0.95);
+            border-top: 1px solid var(--neon-red);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer p {
+            color: var(--tactical-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--carbon-black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-red);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--electric-blue);
+        }
+    </style>
+</head>
+<body>
+        <script>
+  window.onload = function() {
+    window.location.href = "soon.html";
+  };
+</script>
+    <div class="matrix-bg" id="matrix"></div>
+    
+    <header class="header">
+        <nav class="nav">
+            <div class="logo glitch">S.I.F.E.R</div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#dashboard">لوحة التحكم</a></li>
+                <li><a href="#download">التحميل</a></li>
+                <li><a href="#docs">الدليل</a></li>
+                <li><a href="#support">الدعم</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="glitch">S.I.F.E.R</h1>
+            <div class="subtitle">Surveillance Interface For Enhanced Response</div>
+            <div class="tagline">"Your devices are no longer blind..."</div>
+            
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span style="margin-left: 10px; color: var(--ice-white);">S.I.F.E.R Control Terminal</span>
+                </div>
+                <div class="terminal-body" id="terminal-content">
+                    <!-- Terminal content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-section" id="download">
+        <h2 style="font-family: 'Orbitron', monospace; color: var(--neon-red); font-size: 2.5rem; margin-bottom: 2rem;">تحميل النظام</h2>
+        <div class="download-grid">
+            <div class="download-card">
+                <h3>Android Client</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--tactical-gray);">مراقبة مستمرة لجهاز Android مع إرسال البيانات اللحظية</p>
+                <a href="#" class="btn">تحميل APK</a>
+            </div>
+            <div class="download-card">
+                <h3>Windows Listener</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--tactical-gray);">مراقبة شاملة لنظام Windows مع كشف التهديدات</p>
+                <a href="#" class="btn">تحميل EXE</a>
+            </div>
+            <div class="download-card">
+                <h3>Mini PC Controller</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--tactical-gray);">مركز التحكم الرئيسي لإدارة جميع الأجهزة</p>
+                <a href="#" class="btn">تحميل Controller</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-preview" id="dashboard">
+        <h2>لوحة التحكم المباشرة</h2>
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <span>حالة الشبكة</span>
+                    <div class="status-indicator" style="background: var(--toxic-green);"></div>
+                </div>
+                <div class="metric">
+                    <span>الأجهزة المتصلة:</span>
+                    <span class="status-ok">7 أجهزة</span>
+                </div>
+                <div class="metric">
+                    <span>التهديدات المكتشفة:</span>
+                    <span class="status-danger">2 تهديدات</span>
+                </div>
+                <div class="metric">
+                    <span>آخر فحص:</span>
+                    <span class="status-info">منذ 2 ثانية</span>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <span>مراقبة النظام</span>
+                    <div class="status-indicator" style="background: var(--amber-warning);"></div>
+                </div>
+                <div class="metric">
+                    <span>استخدام المعالج:</span>
+                    <span class="status-warning">78%</span>
+                </div>
+                <div class="metric">
+                    <span>استخدام الذاكرة:</span>
+                    <span class="status-ok">45%</span>
+                </div>
+                <div class="metric">
+                    <span>العمليات المشبوهة:</span>
+                    <span class="status-danger">3 عمليات</span>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <span>الموقع الجغرافي</span>
+                    <div class="status-indicator" style="background: var(--electric-blue);"></div>
+                </div>
+                <div class="metric">
+                    <span>الموقع الحالي:</span>
+                    <span class="status-info">الرياض، السعودية</span>
+                </div>
+                <div class="metric">
+                    <span>IP Address:</span>
+                    <span class="status-ok">192.168.1.100</span>
+                </div>
+                <div class="metric">
+                    <span>VPN Status:</span>
+                    <span class="status-ok">متصل</span>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <span>تحليل الأمان</span>
+                    <div class="status-indicator" style="background: var(--neon-red);"></div>
+                </div>
+                <div class="metric">
+                    <span>مستوى التهديد:</span>
+                    <span class="status-danger">عالي</span>
+                </div>
+                <div class="metric">
+                    <span>محاولات الاختراق:</span>
+                    <span class="status-danger">12 محاولة</span>
+                </div>
+                <div class="metric">
+                    <span>آخر هجوم:</span>
+                    <span class="status-warning">منذ 5 دقائق</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 S.I.F.E.R - Surveillance Interface For Enhanced Response. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // Matrix rain effect
+        function createMatrix() {
+            const matrix = document.getElementById('matrix');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            
+            for (let i = 0; i < 20; i++) {
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.left = Math.random() * 100 + '%';
+                column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                column.style.animationDelay = Math.random() * 2 + 's';
+                
+                let text = '';
+                for (let j = 0; j < 20; j++) {
+                    text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
+                }
+                column.innerHTML = text;
+                matrix.appendChild(column);
+            }
+        }
+
+        // Terminal animation
+        function animateTerminal() {
+            const terminal = document.getElementById('terminal-content');
+            const logs = [
+                '[INFO] S.I.F.E.R v2.1.0 initializing...',
+                '[OK] Network interfaces detected: 3',
+                '[WARN] Suspicious process detected: chrome.exe',
+                '[INFO] Geolocation services active',
+                '[DANGER] Unauthorized access attempt blocked',
+                '[OK] Security scan completed',
+                '[INFO] 7 devices under surveillance',
+                '[WARN] High CPU usage detected',
+                '[DANGER] Malware signature found',
+                '[OK] All systems operational'
+            ];
+            
+            let lineIndex = 0;
+            
+            function addLine() {
+                if (lineIndex < logs.length) {
+                    const line = document.createElement('div');
+                    line.className = 'terminal-line';
+                    line.innerHTML = '<span style="color: var(--electric-blue);">[' + new Date().toLocaleTimeString() + ']</span> ' + logs[lineIndex];
+                    
+                    if (logs[lineIndex].includes('DANGER')) {
+                        line.classList.add('status-danger');
+                    } else if (logs[lineIndex].includes('WARN')) {
+                        line.classList.add('status-warning');
+                    } else if (logs[lineIndex].includes('OK')) {
+                        line.classList.add('status-ok');
+                    } else {
+                        line.classList.add('status-info');
+                    }
+                    
+                    terminal.appendChild(line);
+                    
+                    // Remove old lines if too many
+                    if (terminal.children.length > 10) {
+                        terminal.removeChild(terminal.firstChild);
+                    }
+                    
+                    lineIndex = (lineIndex + 1) % logs.length;
+                    
+                    setTimeout(addLine, Math.random() * 2000 + 1000);
+                } else {
+                    setTimeout(() => {
+                        terminal.innerHTML = '';
+                        lineIndex = 0;
+                        addLine();
+                    }, 3000);
+                }
+            }
+            
+            addLine();
+        }
+
+        // Update dashboard metrics
+        function updateDashboard() {
+            const metrics = document.querySelectorAll('.metric span:last-child');
+            
+            setInterval(() => {
+                metrics.forEach((metric, index) => {
+                    if (metric.textContent.includes('%')) {
+                        const newValue = Math.floor(Math.random() * 100) + '%';
+                        metric.textContent = newValue;
+                    } else if (metric.textContent.includes('ثانية')) {
+                        const seconds = Math.floor(Math.random() * 60) + 1;
+                        metric.textContent = `منذ ${seconds} ثانية`;
+                    } else if (metric.textContent.includes('محاولة')) {
+                        const attempts = Math.floor(Math.random() * 20) + 1;
+                        metric.textContent = `${attempts} محاولة`;
+                    }
+                });
+            }, 3000);
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            createMatrix();
+            animateTerminal();
+            updateDashboard();
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

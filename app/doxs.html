@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.I.F.E.R - الدليل التقني</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --carbon-black: #0B0B0B;
+            --neon-red: #FF0033;
+            --tactical-gray: #2E2E2E;
+            --ice-white: #E5E5E5;
+            --electric-blue: #00FFFF;
+            --blood-red: #B30000;
+            --amber-warning: #FFB300;
+            --toxic-green: #00FF88;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--carbon-black);
+            color: var(--ice-white);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 11, 11, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--neon-red);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--neon-red);
+            text-shadow: 0 0 10px var(--neon-red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--ice-white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            border-color: var(--electric-blue);
+            color: var(--electric-blue);
+            text-shadow: 0 0 5px var(--electric-blue);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 2rem 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(46, 46, 46, 0.3);
+            border: 1px solid var(--tactical-gray);
+            border-radius: 10px;
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar h3 {
+            color: var(--electric-blue);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar a {
+            color: var(--tactical-gray);
+            text-decoration: none;
+            padding: 0.5rem 0;
+            display: block;
+            transition: all 0.3s ease;
+            border-right: 2px solid transparent;
+            padding-right: 1rem;
+        }
+
+        .sidebar a:hover, .sidebar a.active {
+            color: var(--neon-red);
+            border-right-color: var(--neon-red);
+            transform: translateX(-5px);
+        }
+
+        /* Content area */
+        .content {
+            background: rgba(46, 46, 46, 0.1);
+            border: 1px solid var(--tactical-gray);
+            border-radius: 10px;
+            padding: 2rem;
+            min-height: 80vh;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section h1 {
+            font-family: 'Orbitron', monospace;
+            color: var(--neon-red);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px var(--neon-red);
+        }
+
+        .section h2 {
+            font-family: 'Orbitron', monospace;
+            color: var(--electric-blue);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--electric-blue);
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: var(--toxic-green);
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            color: var(--ice-white);
+            text-align: justify;
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: rgba(11, 11, 11, 0.8);
+            border: 1px solid var(--toxic-green);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-header {
+            background: var(--tactical-gray);
+            margin: -1.5rem -1.5rem 1rem -1.5rem;
+            padding: 0.5rem 1rem;
+            color: var(--toxic-green);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--toxic-green);
+        }
+
+        .code-block code {
+            color: var(--toxic-green);
+            display: block;
+            line-height: 1.4;
+        }
+
+        /* Info boxes */
+        .info-box {
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .info-box.warning {
+            background: rgba(255, 179, 0, 0.1);
+            border: 1px solid var(--amber-warning);
+            border-right: 4px solid var(--amber-warning);
+        }
+
+        .info-box.danger {
+            background: rgba(255, 0, 51, 0.1);
+            border: 1px solid var(--neon-red);
+            border-right: 4px solid var(--neon-red);
+        }
+
+        .info-box.success {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--toxic-green);
+            border-right: 4px solid var(--toxic-green);
+        }
+
+        .info-box.info {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--electric-blue);
+            border-right: 4px solid var(--electric-blue);
+        }
+
+        .info-box strong {
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(46, 46, 46, 0.5);
+            border: 1px solid var(--tactical-gray);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: right;
+            border-bottom: 1px solid var(--tactical-gray);
+        }
+
+        th {
+            background: var(--tactical-gray);
+            color: var(--electric-blue);
+            font-family: 'Orbitron', monospace;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(46, 46, 46, 0.3);
+        }
+
+        tr:hover {
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        /* Steps list */
+        .steps-list {
+            counter-reset: step-counter;
+        }
+
+        .steps-list li {
+            counter-increment: step-counter;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(46, 46, 46, 0.3);
+            border: 1px solid var(--tactical-gray);
+            border-radius: 8px;
+            position: relative;
+            padding-right: 4rem;
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            background: var(--neon-red);
+            color: var(--ice-white);
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-weight: bold;
+        }
+
+        /* Download buttons */
+        .download-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--neon-red), var(--blood-red));
+            color: var(--ice-white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            border: 1px solid var(--neon-red);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 0, 51, 0.3);
+        }
+
+        .download-btn.secondary {
+            background: linear-gradient(45deg, var(--electric-blue), var(--tactical-gray));
+            border-color: var(--electric-blue);
+        }
+
+        .download-btn.secondary:hover {
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Feature list */
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: rgba(46, 46, 46, 0.5);
+            border: 1px solid var(--tactical-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-color: var(--electric-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
+        }
+
+        .feature-item h4 {
+            color: var(--electric-blue);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Search box */
+        .search-box {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(46, 46, 46, 0.8);
+            border: 1px solid var(--tactical-gray);
+            border-radius: 8px;
+            color: var(--ice-white);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .sidebar {
+                position: static;
+                order: 2;
+            }
+            
+            .content {
+                order: 1;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Copy button for code blocks */
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--tactical-gray);
+            border: 1px solid var(--toxic-green);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--toxic-green);
+            color: var(--carbon-black);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">S.I.F.E.R</div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#dashboard">لوحة التحكم</a></li>
+                <li><a href="#download">التحميل</a></li>
+                <li><a href="#docs" class="active">الدليل</a></li>
+                <li><a href="#support">الدعم</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>فهرس المحتويات</h3>
+            <ul>
+                <li><a href="#overview" class="nav-item active" data-target="overview">نظرة عامة</a></li>
+                <li><a href="#installation" class="nav-item" data-target="installation">التثبيت</a></li>
+                <li><a href="#android" class="nav-item" data-target="android">Android Client</a></li>
+                <li><a href="#windows" class="nav-item" data-target="windows">Windows Listener</a></li>
+                <li><a href="#controller" class="nav-item" data-target="controller">Mini PC Controller</a></li>
+                <li><a href="#configuration" class="nav-item" data-target="configuration">الإعدادات</a></li>
+                <li><a href="#features" class="nav-item" data-target="features">المميزات</a></li>
+                <li><a href="#api" class="nav-item" data-target="api">API Reference</a></li>
+                <li><a href="#troubleshooting" class="nav-item" data-target="troubleshooting">حل المشاكل</a></li>
+                <li><a href="#security" class="nav-item" data-target="security">الأمان</a></li>
+            </ul>
+            
+            <div class="search-box" style="margin-top: 2rem;">
+                <input type="text" class="search-input" placeholder="البحث في الدليل..." id="searchInput">
+            </div>
+        </aside>
+
+        <main class="content">
+            <!-- Overview Section -->
+            <section class="section active" id="overview">
+                <h1>دليل S.I.F.E.R التقني</h1>
+                
+                <div class="info-box info">
+                    <strong>ملاحظة:</strong> S.I.F.E.R هو نظام مراقبة متقدم مصمم للمحترفين في مجال الأمن السيبراني.
+                </div>
+
+                <h2>ما هو S.I.F.E.R؟</h2>
+                <p>S.I.F.E.R (Surveillance Interface For Enhanced Response) هو نظام مراقبة سيبراني هجومي/دفاعي متطور، يتيح لك مراقبة جميع أجهزتك (Android, PC, IoT) بشكل مستمر ومتزامن.</p>
+
+                <h2>الهيكل العام للنظام</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>📱 Android Client</h4>
+                        <p>تطبيق مراقبة يركب على أجهزة Android ويرسل البيانات باستمرار</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>💻 Windows Listener</h4>
+                        <p>خدمة خلفية تراقب أنظمة Windows وتحلل الأنشطة المشبوهة</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🖥️ Mini PC Controller</h4>
+                        <p>مركز التحكم الرئيسي الذي يجمع ويحلل البيانات من جميع المصادر</p>
+                    </div>
+                </div>
+
+                <h2>متطلبات النظام</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المكون</th>
+                                <th>المتطلبات الدنيا</th>
+                                <th>الموصى به</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Controller PC</td>
+                                <td>8GB RAM, Quad-Core CPU</td>
+                                <td>16GB RAM, 8-Core CPU</td>
+                            </tr>
+                            <tr>
+                                <td>Android Device</td>
+                                <td>Android 7.0+</td>
+                                <td>Android 10.0+</td>
+                            </tr>
+                            <tr>
+                                <td>Windows PC</td>
+                                <td>Windows 10</td>
+                                <td>Windows 11</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <strong>تحذير:</strong> استخدم النظام بمسؤولية وفقط على الأجهزة التي تملكها أو لديك إذن قانوني لمراقبتها.
+                </div>
+            </section>
+
+            <!-- Installation Section -->
+            <section class="section" id="installation">
+                <h1>دليل التثبيت</h1>
+                
+                <h2>التحميل</h2>
+                <p>قم بتحميل المكونات المطلوبة:</p>
+                <a href="#" class="download-btn">تحميل Android APK</a>
+                <a href="#" class="download-btn secondary">تحميل Windows EXE</a>
+                <a href="#" class="download-btn">تحميل Controller</a>
+
+                <h2>خطوات التثبيت العامة</h2>
+                <ol class="steps-list">
+                    <li>
+                        <h3>إعداد مركز التحكم (Controller)</h3>
+                        <p>ابدأ بتثبيت Controller على الجهاز الرئيسي الذي سيدير النظام</p>
+                    </li>
+                    <li>
+                        <h3>تثبيت Windows Listener</h3>
+                        <p>قم بتشغيل الملف التنفيذي كمدير على كل جهاز Windows تريد مراقبته</p>
+                    </li>
+                    <li>
+                        <h3>تثبيت Android Client</h3>
+                        <p>قم بتفعيل "مصادر غير معروفة" وثبت APK على أجهزة Android</p>
+                    </li>
+                    <li>
+                        <h3>ربط الأجهزة</h3>
+                        <p>استخدم الرموز المميزة لربط جميع الأجهزة بمركز التحكم</p>
+                    </li>
+                    <li>
+                        <h3>تشغيل النظام</h3>
+                        <p>ابدأ المراقبة من لوحة التحكم الرئيسية</p>
+                    </li>
+                </ol>
+
+                <div class="info-box danger">
+                    <strong>هام:</strong> تأكد من إنشاء backup للبيانات المهمة قبل التثبيت.
+                </div>
+            </section>
+
+            <!-- Android Section -->
+            <section class="section" id="android">
+                <h1>Android Client</h1>
+                
+                <h2>التثبيت على Android</h2>
+                <p>Android Client هو العنصر الأساسي لمراقبة الهواتف الذكية والأجهزة اللوحية.</p>
+
+                <h3>خطوات التثبيت</h3>
+                <ol class="steps-list">
+                    <li>
+                        <h3>تمكين مصادر غير معروفة</h3>
+                        <p>اذهب إلى الإعدادات > الأمان > مصادر غير معروفة وقم بتفعيلها</p>
+                    </li>
+                    <li>
+                        <h3>تحميل وتثبيت APK</h3>
+                        <div class="code-block">
+                            <div class="code-header">Terminal Commands</div>
+                            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                            <code>
+adb install sifer_android_client.apk<br>
+# أو قم بالتثبيت يدوياً من خلال مدير الملفات
+                            </code>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>منح الصلاحيات</h3>
+                        <p>امنح التطبيق جميع الصلاحيات المطلوبة للمراقبة الشاملة</p>
+                    </li>
+                </ol>
+
+                <h2>الصلاحيات المطلوبة</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الصلاحية</th>
+                                <th>الغرض</th>
+                                <th>مستوى الأهمية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Location Access</td>
+                                <td>تتبع الموقع الجغرافي</td>
+                                <td class="status-danger">حرج</td>
+                            </tr>
+                            <tr>
+                                <td>Camera/Microphone</td>
+                                <td>التسجيل والمراقبة</td>
+                                <td class="status-danger">حرج</td>
+                            </tr>
+                            <tr>
+                                <td>Device Administrator</td>
+                                <td>التحكم في الجهاز</td>
+                                <td class="status-danger">حرج</td>
+                            </tr>
+                            <tr>
+                                <td>Network Access</td>
+                                <td>إرسال البيانات</td>
+                                <td class="status-danger">حرج</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>الإعدادات</h2>
+                <div class="code-block">
+                    <div class="code-header">config/android_client.json</div>
+                    <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                    <code>
+{<br>
+&nbsp;&nbsp;"server_ip": "192.168.1.100",<br>
+&nbsp;&nbsp;"server_port": 8443,<br>
+&nbsp;&nbsp;"reporting_interval": 30,<br>
+&nbsp;&nbsp;"location_tracking": true,<br>
+&nbsp;&nbsp;"stealth_mode": true,<br>
+&nbsp;&nbsp;"encryption_key": "your_secure_key_here"<br>
+}
+                    </code>
+                </div>
+
+                <div class="info-box success">
+                    <strong>نصيحة:</strong> فعّل الوضع الخفي (Stealth Mode) لإخفاء التطبيق من قائمة التطبيقات.
+                </div>
+            </section>
+
+            <!-- Windows Section -->
+            <section class="section" id="windows">
+                <h1>Windows Listener</h1>
+                
+                <h2>نظرة عامة</h2>
+                <p>Windows Listener هو خدمة تعمل في الخلفية لمراقبة أنظمة Windows بشكل شامل.</p>
+
+                <h2>التثبيت والإعداد</h2>
+                <ol class="steps-list">
+                    <li>
+                        <h3>تشغيل كمدير</h3>
+                        <p>انقر بالزر الأيمن على sifer_windows.exe واختر "تشغيل كمدير"</p>
+                    </li>
+                    <li>
+                        <h3>تثبيت الخدمة</h3>
+                        <div class="code-block">
+                            <div class="code-header">Command Prompt (Admin)</div>
+                            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                            <code>
+sifer_windows.exe --install-service<br>
+net start "SIFER Windows Listener"<br>
+sc config "SIFER Windows Listener" start= auto
+                            </code>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>تحقق من التشغيل</h3>
+                        <div class="code-block">
+                            <div class="code-header">PowerShell</div>
+                            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                            <code>
+Get-Service "SIFER Windows Listener"<br>
+Get-Process sifer_windows -ErrorAction SilentlyContinue
+                            </code>
+                        </div>
+                    </li>
+                </ol>
+
+                <h2>المميزات المتقدمة</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>🔍 مراقبة العمليات</h4>
+                        <p>تتبع جميع العمليات الجارية وكشف الأنشطة المشبوهة</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📊 تحليل الشبكة</h4>
+                        <p>مراقبة حركة المرور الشبكية والاتصالات</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🛡️ كشف الخروقات</h4>
+                        <p>اكتشاف محاولات الاختراق والبرمجيات الخبيثة</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📝 سجل الأحداث</h4>
+                        <p>تسجيل مفصل لجميع الأنشطة والأحداث</p>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <strong>تحذير:</strong> قد تحتاج إلى إضافة استثناء في برنامج مكافحة الفيروسات.
+                </div>
+            </section>
+
+            <!-- Controller Section -->
+            <section class="section" id="controller">
+                <h1>Mini PC Controller</h1>
+                
+                <h2>مركز التحكم الرئيسي</h2>
+                <p>Controller هو العقل المدبر للنظام، يجمع ويحلل البيانات من جميع المصادر.</p>
+
+                <h2>متطلبات الأجهزة</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المكون</th>
+                                <th>الحد الأدنى</th>
+                                <th>الموصى به</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>المعالج</td>
+                                <td>Intel i5 / AMD Ryzen 5</td>
+                                <td>Intel i7 / AMD Ryzen 7</td>
+                            </tr>
+                            <tr>
+                                <td>الذاكرة</td>
+                                <td>8GB RAM</td>
+                                <td>16GB+ RAM</td>
+                            </tr>
+                            <tr>
+                                <td>التخزين</td>
+                                <td>256GB SSD</td>
+                                <td>512GB+ NVMe SSD</td>
+                            </tr>
+                            <tr>
+                                <td>الشبكة</td>
+                                <td>Gigabit Ethernet</td>
+                                <td>WiFi 6 + Gigabit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>التثبيت والإعداد الأولي</h2>
+                <ol class="steps-list">
+                    <li>
+                        <h3>تثبيت Controller</h3>
+                        <div class="code-block">
+                            <div class="code-header">Linux Terminal</div>
+                            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                            <code>
+sudo chmod +x sifer_controller.run<br>
+sudo ./sifer_controller.run --install<br>
+sudo systemctl enable sifer-controller<br>
+sudo systemctl start sifer-controller
+                            </code>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>إعداد قاعدة البيانات</h3>
+                        <div class="code-block">
+                            <div class="code-header">Database Setup</div>
+                            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                            <code>
+sudo -u postgres psql<br>
+CREATE DATABASE sifer_db;<br>
+CREATE USER sifer_user WITH PASSWORD 'secure_password';<br>
+GRANT ALL PRIVILEGES ON DATABASE sifer_db TO sifer_user;
+                            </code>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>تهيئة الشبكة</h3>
+                        <p>قم بإعداد البورتات والجدار الناري للسماح بالاتصالات</p>
+                        <div class="code-block">
+                            <div class="code-header">Firewall Configuration</div>
+                            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                            <code>
+sudo ufw allow 8443/tcp  # Main API Port<br>
+sudo ufw allow 9443/tcp  # Dashboard Port<br>
+sudo ufw allow 7443/tcp  # Data Collection Port<br>
+sudo ufw reload
+                            </code>
+                        </div>
+                    </li>
+                </ol>
+
+                <h2>واجهة الويب</h2>
+                <p>يمكن الوصول إلى لوحة التحكم عبر المتصفح:</p>
+                <div class="code-block">
+                    <div class="code-header">Web Interface</div>
+                    <code>
+https://your-controller-ip:9443<br>
+Username: admin<br>
+Password: [generated during installation]
+                    </code>
+                </div>
+
+                <div class="info-box success">
+                    <strong>نصيحة:</strong> استخدم IP ثابت للـ Controller لتجنب مشاكل الاتصال.
+                </div>
+            </section>
+
+            <!-- Configuration Section -->
+            <section class="section" id="configuration">
+                <h1>الإعدادات المتقدمة</h1>
+                
+                <h2>ملف الإعداد الرئيسي</h2>
+                <div class="code-block">
+                    <div class="code-header">/etc/sifer/main_config.yaml</div>
+                    <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                    <code>
+# S.I.F.E.R Main Configuration<br>
+server:<br>
+&nbsp;&nbsp;host: "0.0.0.0"<br>
+&nbsp;&nbsp;port: 8443<br>
+&nbsp;&nbsp;ssl_enabled: true<br>
+&nbsp;&nbsp;cert_file: "/etc/sifer/certs/server.crt"<br>
+&nbsp;&nbsp;key_file: "/etc/sifer/certs/server.key"<br>
+<br>
+database:<br>
+&nbsp;&nbsp;host: "localhost"<br>
+&nbsp;&nbsp;port: 5432<br>
+&nbsp;&nbsp;name: "sifer_db"<br>
+&nbsp;&nbsp;user: "sifer_user"<br>
+&nbsp;&nbsp;password: "secure_password"<br>
+<br>
+monitoring:<br>
+&nbsp;&nbsp;data_retention_days: 30<br>
+&nbsp;&nbsp;max_devices: 100<br>
+&nbsp;&nbsp;alert_threshold: "HIGH"<br>
+&nbsp;&nbsp;geo_tracking: true<br>
+<br>
+security:<br>
+&nbsp;&nbsp;encryption_algorithm: "AES-256"<br>
+&nbsp;&nbsp;auth_token_expiry: 3600<br>
+&nbsp;&nbsp;max_failed_attempts: 5<br>
+&nbsp;&nbsp;lockout_duration: 300
+                    </code>
+                </div>
+
+                <h2>إعدادات التنبيهات</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>نوع التنبيه</th>
+                                <th>المستوى</th>
+                                <th>الإجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>محاولة اختراق</td>
+                                <td class="status-danger">حرج</td>
+                                <td>إيقاف الجهاز + إشعار فوري</td>
+                            </tr>
+                            <tr>
+                                <td>برمجية خبيثة</td>
+                                <td class="status-danger">حرج</td>
+                                <td>عزل الجهاز + تنظيف</td>
+                            </tr>
+                            <tr>
+                                <td>تغيير موقع مشبوه</td>
+                                <td class="status-warning">متوسط</td>
+                                <td>إشعار + تسجيل</td>
+                            </tr>
+                            <tr>
+                                <td>استخدام مرتفع للموارد</td>
+                                <td class="status-info">منخفض</td>
+                                <td>تسجيل فقط</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>إعداد التشفير</h2>
+                <p>لضمان أمان البيانات المنقولة:</p>
+                <div class="code-block">
+                    <div class="code-header">Generate SSL Certificates</div>
+                    <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                    <code>
+# إنتاج شهادات SSL<br>
+openssl genrsa -out server.key 2048<br>
+openssl req -new -x509 -key server.key -out server.crt -days 365<br>
+<br>
+# نقل الشهادات<br>
+sudo cp server.crt /etc/sifer/certs/<br>
+sudo cp server.key /etc/sifer/certs/<br>
+sudo chmod 600 /etc/sifer/certs/*
+                    </code>
+                </div>
+
+                <div class="info-box warning">
+                    <strong>تحذير:</strong> لا تشارك مفاتيح التشفير أو ملفات الإعداد مع أطراف خارجية.
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="section" id="features">
+                <h1>المميزات والوظائف</h1>
+                
+                <h2>المراقبة الشاملة</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>🌍 تتبع الموقع الجغرافي</h4>
+                        <p>مراقبة دقيقة للمواقع مع إمكانية تحديد المناطق الآمنة والخطيرة</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📱 مراقبة التطبيقات</h4>
+                        <p>تتبع استخدام التطبيقات وكشف البرمجيات المشبوهة</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🌐 تحليل الشبكة</h4>
+                        <p>مراقبة حركة البيانات واكتشاف الاتصالات غير المصرح بها</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🔒 حماية البيانات</h4>
+                        <p>تشفير متقدم لجميع البيانات المنقولة والمخزنة</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>⚡ تنبيهات فورية</h4>
+                        <p>إشعارات لحظية عند اكتشاف أي نشاط مشبوه</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📊 تقارير مفصلة</h4>
+                        <p>تقارير شاملة وإحصائيات دقيقة عن جميع الأنشطة</p>
+                    </div>
+                </div>
+
+                <h2>أدوات التحليل المتقدمة</h2>
+                <h3>محلل الشبكة</h3>
+                <p>يوفر تحليلاً عميقاً لحركة البيانات:</p>
+                <ul>
+                    <li>رصد البروتوكولات المستخدمة</li>
+                    <li>تحليل الـ DNS queries</li>
+                    <li>كشف الـ Man-in-the-Middle attacks</li>
+                    <li>مراقبة استهلاك البيانات</li>
+                </ul>
+
+                <h3>كاشف البرمجيات الخبيثة</h3>
+                <div class="code-block">
+                    <div class="code-header">Malware Detection Engine</div>
+                    <code>
+[INFO] Scanning process: chrome.exe<br>
+[WARN] Suspicious network activity detected<br>
+[DANGER] Potential keylogger found: suspicious.exe<br>
+[ACTION] Process terminated and quarantined
+                    </code>
+                </div>
+
+                <h3>محرك الذكاء الاصطناعي</h3>
+                <p>يستخدم خوارزميات متقدمة للتنبؤ بالتهديدات:</p>
+                <ul>
+                    <li>تحليل السلوك الطبيعي للمستخدم</li>
+                    <li>كشف الشذوذات في الاستخدام</li>
+                    <li>التنبؤ بمحاولات الاختراق</li>
+                    <li>تحديث قواعد الكشف تلقائياً</li>
+                </ul>
+
+                <div class="info-box success">
+                    <strong>مميز:</strong> النظام يتعلم من سلوكك ويتحسن مع الوقت لتوفير حماية أفضل.
+                </div>
+            </section>
+
+            <!-- API Section -->
+            <section class="section" id="api">
+                <h1>مرجع API</h1>
+                
+                <h2>نظرة عامة</h2>
+                <p>S.I.F.E.R يوفر RESTful API شامل للتكامل مع الأنظمة الخارجية.</p>
+
+                <h2>Authentication</h2>
+                <div class="code-block">
+                    <div class="code-header">POST /api/v1/auth/login</div>
+                    <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                    <code>
+curl -X POST https://controller-ip:8443/api/v1/auth/login \<br>
+&nbsp;&nbsp;-H "Content-Type: application/json" \<br>
+&nbsp;&nbsp;-d '{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"username": "admin",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"password": "your_password",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"device_id": "unique_device_id"<br>
+&nbsp;&nbsp;}'
+                    </code>
+                </div>
+
+                <h2>Device Management</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Endpoint</th>
+                                <th>Method</th>
+                                <th>الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>/api/v1/devices</td>
+                                <td>GET</td>
+                                <td>قائمة جميع الأجهزة</td>
+                            </tr>
+                            <tr>
+                                <td>/api/v1/devices/{id}</td>
+                                <td>GET</td>
+                                <td>تفاصيل جهاز محدد</td>
+                            </tr>
+                            <tr>
+                                <td>/api/v1/devices/{id}/status</td>
+                                <td>PUT</td>
+                                <td>تحديث حالة الجهاز</td>
+                            </tr>
+                            <tr>
+                                <td>/api/v1/devices/{id}/commands</td>
+                                <td>POST</td>
+                                <td>إرسال أوامر للجهاز</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Data Collection</h2>
+                <div class="code-block">
+                    <div class="code-header">POST /api/v1/data/submit</div>
+                    <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                    <code>
+{<br>
+&nbsp;&nbsp;"device_id": "android_device_001",<br>
+&nbsp;&nbsp;"timestamp": "2025-01-15T10:30:00Z",<br>
+&nbsp;&nbsp;"location": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"lat": 24.7136,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"lng": 46.6753,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": 5<br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;"system_info": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"battery": 85,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"network": "WiFi",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"signal_strength": -45<br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;"security_events": []<br>
+}
+                    </code>
+                </div>
+
+                <h2>Alert Management</h2>
+                <div class="code-block">
+                    <div class="code-header">GET /api/v1/alerts?level=HIGH&limit=50</div>
+                    <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                    <code>
+{<br>
+&nbsp;&nbsp;"alerts": [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "alert_001",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"level": "HIGH",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type": "INTRUSION_ATTEMPT",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"device_id": "windows_pc_001",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"message": "Multiple failed login attempts",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"timestamp": "2025-01-15T10:25:00Z"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;],<br>
+&nbsp;&nbsp;"total": 1,<br>
+&nbsp;&nbsp;"page": 1<br>
+}
+                    </code>
+                </div>
+
+                <div class="info-box info">
+                    <strong>ملاحظة:</strong> جميع API calls تتطلب Bearer token صالح في الـ Authorization header.
+                </div>
+            </section>
+
+            <!-- Troubleshooting Section -->
+            <section class="section" id="troubleshooting">
+                <h1>حل المشاكل الشائعة</h1>
+                
+                <h2>مشاكل الاتصال</h2>
+                <div class="info-box danger">
+                    <strong>مشكلة:</strong> الأجهزة لا تتصل بـ Controller
+                </div>
+                
+                <h3>الحلول المحتملة:</h3>
+                <ol class="steps-list">
+                    <li>
+                        <h3>فحص الشبكة</h3>
+                        <div class="code-block">
+                            <div class="code-header">Network Diagnostics</div>
+                            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                            <code>
+ping controller-ip<br>
+telnet controller-ip 8443<br>
+nmap -p 8443 controller-ip
+                            </code>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>فحص Firewall</h3>
+                        <p>تأكد من أن البورتات مفتوحة في جدار الحماية</p>
+                    </li>
+                    <li>
+                        <h3>فحص شهادات SSL</h3>
+                        <div class="code-block">
+                            <div class="code-header">SSL Certificate Check</div>
+                            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                            <code>
+openssl s_client -connect controller-ip:8443<br>
+curl -v https://controller-ip:8443/api/v1/health
+                            </code>
+                        </div>
+                    </li>
+                </ol>
+
+                <h2>مشاكل الأداء</h2>
+                <div class="info-box warning">
+                    <strong>مشكلة:</strong> النظام بطيء أو يستهلك موارد كثيرة
+                </div>
+
+                <h3>تحسين الأداء:</h3>
+                <ul>
+                    <li>زيادة ذاكرة الـ Controller</li>
+                    <li>تقليل فترة إرسال البيانات</li>
+                    <li>تنظيف قاعدة البيانات القديمة</li>
+                    <li>استخدام SSD بدلاً من HDD</li>
+                </ul>
+
+                <div class="code-block">
+                    <div class="code-header">Database Cleanup</div>
+                    <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                    <code>
+# حذف البيانات القديمة (أكثر من 30 يوم)<br>
+sudo -u postgres psql sifer_db<br>
+DELETE FROM device_logs WHERE created_at < NOW() - INTERVAL '30 days';<br>
+VACUUM ANALYZE;
+                    </code>
+                </div>
+
+                <h2>مشاكل Android Client</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المشكلة</th>
+                                <th>السبب المحتمل</th>
+                                <th>الحل</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>التطبيق لا يعمل</td>
+                                <td>صلاحيات غير مكتملة</td>
+                                <td>منح جميع الصلاحيات</td>
+                            </tr>
+                            <tr>
+                                <td>لا يرسل الموقع</td>
+                                <td>GPS مغلق</td>
+                                <td>تفعيل خدمات الموقع</td>
+                            </tr>
+                            <tr>
+                                <td>البطارية تنفد سريعاً</td>
+                                <td>إعدادات خاطئة</td>
+                                <td>تقليل تكرار الإرسال</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>سجلات النظام</h2>
+                <p>لتشخيص المشاكل، راجع سجلات النظام:</p>
+                <div class="code-block">
+                    <div class="code-header">Log Files Location</div>
+                    <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                    <code>
+# Controller Logs<br>
+tail -f /var/log/sifer/controller.log<br>
+<br>
+# Windows Listener Logs<br>
+type C:\ProgramData\SIFER\listener.log<br>
+<br>
+# Android Logs (via ADB)<br>
+adb logcat | grep SIFER
+                    </code>
+                </div>
+
+                <div class="info-box info">
+                    <strong>نصيحة:</strong> فعّل الـ Debug mode للحصول على معلومات أكثر تفصيلاً في السجلات.
+                </div>
+            </section>
+
+            <!-- Security Section -->
+            <section class="section" id="security">
+                <h1>الأمان والحماية</h1>
+                
+                <h2>أمان البيانات</h2>
+                <p>S.I.F.E.R يستخدم أحدث تقنيات التشفير والحماية:</p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>🔐 تشفير AES-256</h4>
+                        <p>جميع البيانات مشفرة باستخدام معيار AES-256</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🛡️ SSL/TLS</h4>
+                        <p>اتصالات آمنة مع شهادات SSL محدثة</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🔑 مصادقة متعددة المستويات</h4>
+                        <p>نظام مصادقة قوي مع tokens منتهية الصلاحية</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🚫 حماية من البروت فورس</h4>
+                        <p>حماية ضد هجمات التجربة والخطأ</p>
+                    </div>
+                </div>
+
+                <h2>الممارسات الآمنة</h2>
+                <div class="info-box success">
+                    <strong>نصائح الأمان:</strong>
+                    <ul>
+                        <li>غيّر كلمات المرور الافتراضية فوراً</li>
+                        <li>استخدم شبكة منعزلة للـ Controller</li>
+                        <li>فعّل النسخ الاحتياطي المشفر</li>
+                        <li>راجع سجلات الوصول بانتظام</li>
+                        <li>حدّث النظام باستمرار</li>
+                    </ul>
+                </div>
+
+                <h2>إعدادات الأمان المتقدمة</h2>
+                <div class="code-block">
+                    <div class="code-header">security_config.yaml</div>
+                    <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                    <code>
+security:<br>
+&nbsp;&nbsp;# كلمة مرور قوية للمدير<br>
+&nbsp;&nbsp;admin_password_policy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;min_length: 12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;require_uppercase: true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;require_numbers: true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;require_symbols: true<br>
+<br>
+&nbsp;&nbsp;# حماية من البروت فورس<br>
+&nbsp;&nbsp;brute_force_protection:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max_attempts: 3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lockout_duration: 900  # 15 minutes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ban_duration: 3600     # 1 hour<br>
+<br>
+&nbsp;&nbsp;# تدوير المفاتيح<br>
+&nbsp;&nbsp;key_rotation:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;enabled: true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;interval_days: 30<br>
+&nbsp;&nbsp;&nbsp;&nbsp;backup_old_keys: true
+                    </code>
+                </div>
+
+                <h2>مراقبة الأمان</h2>
+                <p>النظام يراقب نفسه باستمرار ويكشف:</p>
+                <ul>
+                    <li>محاولات الوصول غير المصرح بها</li>
+                    <li>تغييرات في ملفات النظام المهمة</li>
+                    <li>أنشطة مشبوهة في قاعدة البيانات</li>
+                    <li>محاولات تعديل إعدادات الأمان</li>
+                </ul>
+
+                <h2>النسخ الاحتياطي الآمن</h2>
+                <div class="code-block">
+                    <div class="code-header">Encrypted Backup Script</div>
+                    <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+                    <code>
+#!/bin/bash<br>
+# نسخة احتياطية مشفرة لقاعدة البيانات<br>
+BACKUP_DATE=$(date +%Y%m%d_%H%M%S)<br>
+pg_dump sifer_db | gzip | gpg --cipher-algo AES256 --compress-algo 1 --symmetric --output /backup/sifer_backup_$BACKUP_DATE.sql.gz.gpg<br>
+<br>
+# نسخة احتياطية لملفات الإعداد<br>
+tar -czf - /etc/sifer | gpg --cipher-algo AES256 --symmetric --output /backup/sifer_config_$BACKUP_DATE.tar.gz.gpg
+                    </code>
+                </div>
+
+                <div class="info-box danger">
+                    <strong>تحذير هام:</strong> S.I.F.E.R أداة قوية. استخدمها بمسؤولية ووفقاً للقوانين المحلية فقط.
+                </div>
+
+                <h2>الامتثال القانوني</h2>
+                <p>تأكد من الامتثال للقوانين المحلية عند استخدام النظام:</p>
+                <ul>
+                    <li>لا تراقب أجهزة لا تملكها</li>
+                    <li>احترم قوانين الخصوصية المحلية</li>
+                    <li>احصل على إذن كتابي عند مراقبة أجهزة الموظفين</li>
+                    <li>قم بتشفير وحماية البيانات المجمعة</li>
+                    <li>اتّبع سياسات الاحتفاظ بالبيانات</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
